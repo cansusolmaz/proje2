@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+function validateForm() {
+  var text1, text2,text3;
+  var numbers = /^[0-9]+$/;
+  var letters = /^[A-Za-z]+$/;
+  var passw=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/;
+
+  var x = document.querySelector("#name").value;
+  if (x == "") {
+    text1 = "INVALID";
+  } else {
+    text1 = "";
+  }
+
+   var x = document.querySelector("#email").value;
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(x)) {
+    text2 = "";
+  } else {
+    text2 = "INVALID";
+  }
+
+  var x = document.querySelector("#sayisal").value;
+  if (x.match(numbers)) {
+    text3 = "";
+  } else {
+    text3 = "INVALID";
+  }
+
+    var x = document.querySelector("#basamakli").value;
+  if (x.match(numbers) && x.length == 12) {
+    text4 = "";
+  } else {
+    text4 = "INVALID";
+  }
+
+
+   var x = document.querySelector("#alfa").value;
+  if (x.match(letters)) {
+    text5 = "";
+  } else {
+    text5 = "INVALID";
+  }
+
+   var x = document.querySelector("#max30").value;
+  if (x.match(letters) && x.length<=30) {
+    text6 = "";
+  } else {
+    text6 = "INVALID";
+  }
+
+ var x = document.querySelector("#uckelime").value;
+ var len = x.split(" ").length;
+  if (len==3) {
+    text7 = "";
+  } else {
+    text7 = "INVALID";
+  }
+ var x = document.querySelector("#password").value;
+  if (x.match(passw)) {
+    text8 = "";
+  } else {
+    text8 = "INVALID";
+  }
+
+
+    document.getElementById("nonulls").innerHTML = text1;
+    document.getElementById("checkmail").innerHTML = text2;
+    document.getElementById("numeric").innerHTML = text3;
+    document.getElementById("12basamak").innerHTML = text4;
+    document.getElementById("alphabetic").innerHTML = text5;
+    document.getElementById("alphathirty").innerHTML = text6;
+    document.getElementById("threewords").innerHTML = text7;
+    document.getElementById("pw").innerHTML = text8;
+
+
+}
+</script>
+</head>
+<body>
+
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Aşağıdaki hiçbir input boş olmamalı: <br>
+  
+
+  <table style="width:40%">
+  <tr>
+    <td>Boş olmamalı: </td>
+    <td><input type="text" id="name"></td>
+    <td id="nonulls" style="color:red;"></td>
+    
+  </tr>
+  <tr>
+    <td>E-mail (Kurallara uygun email): </td>
+    <td><input type="text" id="email"></td>
+    <td id="checkmail" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal: </td>
+    <td><input type="text" id="sayisal"></td>
+    <td id="numeric" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td>Sadece sayısal olan ve 12 basamak uzunluğundaki sayi: </td>
+    <td><input type="text" id="basamakli"></td>
+    <td id="12basamak" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td>Sadece harf (a..z veya A..Z): </td>
+    <td><input type="text" id="alfa"></td>
+    <td id="alphabetic" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td>Sadece harf ve en fazla 30 uzunlukta olan string: </td>
+    <td><input type="text" id="max30"></td>
+    <td id="alphathirty" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td>3 kelimeden oluşan string: </td>
+    <td><input type="text" id="uckelime"></td>
+    <td id="threewords" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td>En az 1 büyük harf, en az 1 küçük harf, en az bir rakam ve en az 1 noktalama işareti içeren ve en az 8 uzunluğunda olan metin: </td>
+    <td><input type="text" id="password"></td>
+    <td id="pw" style="color:red;"></td>
+  </tr>
+  
+
+</table>
+
+<br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
